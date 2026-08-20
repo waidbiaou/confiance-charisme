@@ -517,9 +517,14 @@
 
   @media (max-width:920px){
     .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{order:-1;margin-bottom:34px;}
+    .hero-visual{order:1;margin-top:34px;margin-bottom:0;}
     .cover-frame{max-width:260px;}
     .quote-float{display:none;}
+    .hero-grid > div:first-child{text-align:center;}
+    .hero h1, .hero-sub{text-align:center;}
+    .hero-sub{margin-left:auto;margin-right:auto;}
+    .hero .hero-cta-row, .hero-cta-row{justify-content:center;}
+    .hero-mini-trust{justify-content:center;}
     .pillar-grid{grid-template-columns:repeat(2,1fr);}
     .nav-links{display:none;}
     .module-row, .module-row:nth-child(even){flex-direction:column;padding:22px;gap:22px;}
@@ -532,6 +537,11 @@
   }
   @media (max-width:560px){
     .wrap{padding:0 20px;}
+    .nav{padding:14px 20px;}
+    .brand{font-size:14.5px;gap:7px;}
+    .brand svg{width:19px;height:19px;}
+    .btn-sm{padding:9px 14px;font-size:12px;gap:6px;}
+    .btn-sm svg{width:14px;height:14px;}
     .stat-row{flex-wrap:wrap;row-gap:20px;}
     .stat{flex:0 0 50%;padding-left:0;border-left:none !important;}
     .stat + .stat{padding-left:22px;}
@@ -542,6 +552,7 @@
     .offer-card{padding:36px 22px;}
     .offer-new{font-size:42px;}
     .offer-old{font-size:18px;}
+    .foot-row{flex-direction:column;justify-content:center;text-align:center;gap:12px;}
   }
 </style>
 </head>
