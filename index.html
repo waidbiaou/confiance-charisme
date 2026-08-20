@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F7F5F0;
-    --bg-alt:#EFEDE5;
+    --bg:#F8F6F1;
+    --bg-alt:#EFE9DD;
     --paper:#FFFFFF;
-    --ink:#1B222C;
-    --ink-soft:#4C5563;
-    --ink-faint:#8B93A0;
-    --accent:#2E5C87;
-    --accent-deep:#1E3E5C;
-    --accent-soft:#E1EAF2;
-    --accent-bright:#4A80B0;
-    --line:#E3E0D6;
+    --ink:#211D18;
+    --ink-soft:#544E45;
+    --ink-faint:#948C7F;
+    --accent:#A8763A;
+    --accent-deep:#7C5423;
+    --accent-soft:#F1E4CC;
+    --accent-bright:#C79552;
+    --line:#E6DFD0;
     --dark:#131B24;
     --dark-soft:#1D2733;
     --dark-line:rgba(255,255,255,0.1);
@@ -158,10 +158,10 @@
   }
   .hero h1 .accent-word{color:var(--accent-deep);}
   .hero-sub{
-    font-size:18px;color:var(--ink-soft);max-width:540px;margin:0 auto 30px;text-align:center;
+    font-size:18px;color:var(--ink-soft);max-width:520px;margin:0 0 30px;text-align:left;
   }
   .hero-cta-row{
-    display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:30px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px;justify-content:flex-start;
   }
   .trust-chips{
     display:flex;flex-wrap:wrap;gap:10px;margin-bottom:38px;
@@ -173,6 +173,10 @@
     font-size:13px;font-weight:600;color:var(--ink-soft);
   }
   .chip svg{width:15px;height:15px;color:var(--accent);flex:none;}
+  .hero-mini-trust{
+    display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--ink-soft);
+  }
+  .hero-mini-trust svg{width:16px;height:16px;color:var(--accent);flex:none;}
 
   .stat-row{display:flex;border-top:1px solid var(--line);padding-top:26px;}
   .stat{flex:1;padding-right:22px;}
@@ -181,19 +185,25 @@
   .stat .lbl{font-size:12.5px;color:var(--ink-faint);font-weight:600;}
 
   .hero-visual{position:relative;display:flex;justify-content:center;}
+  @keyframes coverFloat{
+    0%{transform:rotate(1.6deg) translateY(0);}
+    50%{transform:rotate(-1deg) translateY(-14px);}
+    100%{transform:rotate(1.6deg) translateY(0);}
+  }
   .cover-frame{
-    position:relative;width:100%;max-width:330px;border-radius:20px;overflow:hidden;
-    box-shadow:var(--shadow-soft);transform:rotate(1.6deg);
-    transition:transform .6s cubic-bezier(.22,.61,.36,1);
+    position:relative;width:100%;max-width:360px;border-radius:20px;overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    animation:coverFloat 6s ease-in-out infinite;
     padding:10px;background:linear-gradient(155deg,#fff 0%,var(--accent-soft) 100%);
     border:1px solid var(--line);
   }
-  .cover-frame:hover{transform:rotate(0deg) translateY(-4px);}
+  .cover-frame:hover{animation-play-state:paused;transform:rotate(0deg) translateY(-6px);}
   .cover-frame-inner{border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -14px rgba(19,27,36,0.35);}
   .cover-frame img{width:100%;height:auto;display:block;}
   .cover-ring{
     position:absolute;inset:-14px;border-radius:28px;
-    border:1px dashed rgba(46,92,135,0.28);pointer-events:none;
+    border:1px dashed rgba(168,118,58,0.32);pointer-events:none;
+    animation:coverFloat 6s ease-in-out infinite;
   }
   .cover-badge{
     position:absolute;bottom:-20px;left:-30px;background:var(--paper);
@@ -232,8 +242,10 @@
   }
   .pain-card, .benefit-card, .pillar-card{align-items:center;}
   .fw-card h3{justify-content:center;}
-  .hero-grid > div:first-child{text-align:center;}
-  .hero-cta-row, .hero-grid .trust-chips, .hero .stat-row, .closing .trust-chips{justify-content:center;}
+  .hero-grid > div:first-child{text-align:left;}
+  .hero h1, .hero .eyebrow, .hero-sub{text-align:left;}
+  .hero-cta-row, .hero-grid .trust-chips, .hero .stat-row{justify-content:flex-start;}
+  .closing .trust-chips{justify-content:center;}
 
   ul, li{text-align:left;}
   .fw-card ul, .fw-card li,
@@ -485,13 +497,15 @@
 
   /* centered text throughout, bullet lists stay left even on mobile */
   section p, section h1, section h2, section h3, section h4, section blockquote,
-  .hero-grid > div:first-child, .hero-sub, .stat, .cover-badge, .exercise div,
+  .stat, .cover-badge, .exercise div,
   .wk, .t-name, .t-role, .chip, .closing blockquote{
     text-align:center;
   }
-  .hero-grid > div:first-child{margin:0 auto;}
+  .hero h1, .hero-sub{text-align:left;}
   .section-head{margin-left:auto;margin-right:auto;}
   .hero-cta-row, .trust-chips{justify-content:center;}
+  .hero .hero-cta-row{justify-content:flex-start;}
+  .closing .trust-chips{justify-content:center;}
   .pain-card, .benefit-card, .pillar-card{align-items:center;}
   .fw-card h3{justify-content:center;}
   .stat-row{justify-content:center;}
@@ -545,11 +559,9 @@
       Confiance &amp; Charisme
     </div>
     <nav class="nav-links">
-      <a href="#probleme">Le blocage</a>
       <a href="#modules">Modules</a>
       <a href="#plan">Plan 30 jours</a>
       <a href="#temoignages">Avis</a>
-      <a href="#offre">Offre</a>
       <a href="#faq">Questions</a>
     </nav>
     <a href="https://solstice-homme.mymaketou.shop/fr/products/confiance-charisme-devenir-lhomme-que-les-femmes-choisissent" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
@@ -566,32 +578,16 @@
     <div>
       <span class="eyebrow reveal">Guide numérique complet</span>
       <h1 class="reveal reveal-delay-1">Devenir l'homme <span class="accent-word">que les femmes choisissent</span></h1>
-      <p class="hero-sub reveal reveal-delay-2">Un guide construit sur la psychologie du comportement, le langage corporel et la conversation naturelle. Pas de scripts à réciter. Des mécanismes à comprendre et un plan concret pour les mettre en action, jour après jour, pendant 30 jours.</p>
+      <p class="hero-sub reveal reveal-delay-2">Un guide construit sur la psychologie du comportement, le langage corporel et la conversation naturelle. Un plan concret à mettre en action, jour après jour, pendant 30 jours.</p>
       <div class="hero-cta-row reveal reveal-delay-3">
         <a href="https://solstice-homme.mymaketou.shop/fr/products/confiance-charisme-devenir-lhomme-que-les-femmes-choisissent" target="_blank" rel="noopener" class="btn btn-primary">
           Télécharger le guide
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg>
         </a>
-        <a href="https://solstice-homme.mymaketou.shop/fr/products/confiance-charisme-devenir-lhomme-que-les-femmes-choisissent" target="_blank" rel="noopener" class="btn btn-ghost">Voir le contenu complet</a>
       </div>
-      <div class="trust-chips reveal reveal-delay-3">
-        <div class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.6 2.6"/></svg>
-          Basé sur la psychologie du comportement
-        </div>
-        <div class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1 2 2H5a2 2 0 0 1 2 2V5a2 2 0 0 1 2 2h9"/></svg>
-          Plan d'action de 30 jours inclus
-        </div>
-        <div class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          Écrit dans le respect du consentement
-        </div>
-      </div>
-      <div class="stat-row reveal">
-        <div class="stat"><span class="num">6</span><span class="lbl">Modules condensés</span></div>
-        <div class="stat"><span class="num">5</span><span class="lbl">Piliers fondateurs</span></div>
-        <div class="stat"><span class="num">30</span><span class="lbl">Jours de plan d'action</span></div>
+      <div class="hero-mini-trust reveal reveal-delay-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1 2 2H5a2 2 0 0 1 2 2V5a2 2 0 0 1 2 2h9"/></svg>
+        PDF immédiat · 6 modules · Plan de 30 jours
       </div>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
@@ -600,16 +596,6 @@
         <div class="cover-frame-inner">
           <img src="https://d1yei2z3i6k35z.cloudfront.net/14172262/6a867590ad1257.09879260_MAHEBOOK.jpeg" alt="Couverture du guide Confiance et Charisme">
         </div>
-      </div>
-      <div class="cover-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-        <div>
-          <span class="t1">Format</span>
-          <span class="t2">PDF téléchargeable</span>
-        </div>
-      </div>
-      <div class="quote-float">
-        <span>La confiance n'est pas fixe.</span> C'est le solde de preuves accumulées sur ta capacité à faire face.
       </div>
     </div>
   </div>
